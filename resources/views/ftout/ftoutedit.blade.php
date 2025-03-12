@@ -1,0 +1,179 @@
+@extends('home')
+@section('content')
+<link rel="stylesheet" type="text/css" href="{{asset('css/form_style.css')}}">
+<link rel="stylesheet" href="{{asset('vendor/jquery-ui/jquery-ui.min.css')}}">
+<div class="box">
+<div class="box-sub">
+    <div class="title">Editar Factura Emitida N° {{$ftout->cod_ftout}}</div>
+	<form action="{{route('Ftout.update', $ftout->id_ftout)}}" method="post" enctype="multipart/form-data">
+	@csrf
+	@method('PUT')
+		<div class="details">
+			<div class="details-box">
+				<div class="box-input">
+					<label>RUC cliente</label>
+					<input type="text" maxlength="13" required="" name="ruc_ftout" id="ruc_occliente" value="{{$ftout->ruc_ftout}}">
+				</div>
+			</div>
+			<div class="details-box">
+				<div class="box-input">
+					<label>Razon social</label>
+					<input type="text" maxlength="250" name="razons_ftout" id="razons_occliente" value="{{$ftout->razons_ftout}}">
+				</div>
+			</div>
+		</div>
+		<div class="details">
+			<div class="details-box">
+			<div class="box-input">
+				<label>N° de Factura</label>
+				<input type="text" maxlength="50" name="desc_ftout" value="{{$ftout->desc_ftout}}">
+			</div>
+			</div>
+			<div class="details-box">
+				<div class="box-input">
+					<label>Moneda</label>
+					<input type="text" readonly maxlength="15" name="moneda_ftout" value="{{$ftout->moneda_ftout}}">
+				</div>
+			</div>
+		</div>
+		<div class="details">
+			<div class="details-box">
+				<div class="box-input">
+					<label>COT</label>
+					<input type="text" maxlength="15" name="cot_ftout" id="cot_occliente" value="{{$ftout->cot_ftout}}">
+				</div>
+			</div>
+			<div class="details-box">
+				<div class="box-input">
+					<label>N° OCC</label>
+					<input type="text" maxlength="15" name="entrega_ftout" id="buscar_numocc" value="{{$ftout->entrega_ftout}}">
+				</div>
+			</div>
+		</div>
+		<div class="details">
+			<div class="details-box">
+				<div class="box-input">
+					<label>Sub Total</label>
+					<input type="text" maxlength="15" name="subtotal_ftout" value="{{$ftout->subtotal_ftout}}">
+				</div>
+			</div>
+			<div class="details-box">
+				<div class="box-input">
+					<label>Total</label>
+					<input type="text" maxlength="15" name="total_ftout" value="{{$ftout->total_ftout}}">
+				</div>
+			</div>
+		</div>
+		<div class="details">
+			<div class="details-box">
+				<div class="box-input">
+					<label>F. Emisión</label>
+					<input type="date" maxlength="15" name="femi_ftout" value="{{$ftout->femi_ftout}}">
+				</div>
+			</div>
+			<div class="details-box">
+				<div class="box-input">
+					<label>F. Vencimiento</label>
+					<input type="date" maxlength="15" name="fcaduca_ftout" value="{{$ftout->fcaduca_ftout}}">
+				</div>
+			</div>
+		</div>
+		<div class="return">
+			<a href="{{route('Ftout.index')}}">Regresar</a>
+			<button type="submit">Guardar</button>
+		</div>
+	</form>
+</div>
+</div>
+
+<script src="{{asset('vendor/jquery/jquery-3.6.0.js')}}"></script>
+<script src="{{asset('vendor/jquery-ui/jquery-ui.min.js')}}"></script>
+<script>
+		$('#buscar_numocc').autocomplete({
+			source: function(request, response){
+				$.ajax({
+					url: "{{route('buscar_numocc')}}",
+					dataType: 'json',
+					data: {
+						w: request.term
+					},
+					success: function(data){
+						response(data);
+					}
+				});
+			},
+			select: function (event, ui) {
+	          $('#buscar_numocc').val(ui.item.label);
+	          $('#ruc_occliente').val(ui.item.ruc_occliente);
+	          $('#razons_occliente').val(ui.item.razons_occliente);
+	          $('#cot_occliente').val(ui.item.cot_occliente);
+	          return false;
+	        }
+		});
+</script>
+<script>
+		$('#cot_occliente').autocomplete({
+			source: function(request, response){
+				$.ajax({
+					url: "{{route('cod_occliente')}}",
+					dataType: 'json',
+					data: {
+						t: request.term
+					},
+					success: function(data){
+						response(data);
+					}
+				});
+			},
+			select: function (event, ui) {
+	          $('#cot_occliente').val(ui.item.label);
+	          $('#ruc_occliente').val(ui.item.ruc_occliente);
+	          $('#razons_occliente').val(ui.item.razons_occliente);
+	          $('#buscar_numocc').val(ui.item.entrega_occliente);
+	          return false;
+	        }
+		});
+</script>
+<script>
+		$('#razons_occliente').autocomplete({
+			source: function(request, response){
+				$.ajax({
+					url: "{{route('cli_razons')}}",
+					dataType: 'json',
+					data: {
+						f: request.term
+					},
+					success: function(data){
+						response(data);
+					}
+				});
+			},
+			select: function (event, ui) {
+	          $('#razons_occliente').val(ui.item.label);
+	          $('#ruc_occliente').val(ui.item.ruc_clie);
+	          return false;
+	        }
+		});
+</script>
+<script>
+		$('#ruc_occliente').autocomplete({
+			source: function(request, response){
+				$.ajax({
+					url: "{{route('ruc_cliente')}}",
+					dataType: 'json',
+					data: {
+						n: request.term
+					},
+					success: function(data){
+						response(data);
+					}
+				});
+			},
+			select: function (event, ui) {
+	          $('#ruc_occliente').val(ui.item.label);
+	          $('#razons_occliente').val(ui.item.razons);
+	          return false;
+	        }
+		});
+</script>
+@endsection

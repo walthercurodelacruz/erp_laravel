@@ -1,0 +1,87 @@
+.div1{
+	width: 100%;
+}
+
+.div2{
+	margin: 3% auto;
+	width: 70%;
+}
+
+.codigo{
+	padding: 5px;
+	color: black;
+	font-weight: 600;
+	font-size: 22px;
+	width: 150px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+table{
+	width: 100%;
+}
+
+thead th:nth-child(1){
+	width: 35%;
+}
+
+thead th:nth-child(5){
+	width: 5%;
+}
+
+table th{
+	padding: 5px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 550;
+	background-color: rgba(0, 150, 40, 0.4);
+}
+
+.datos input{
+	width: 99%;
+	margin: auto 2%;
+	outline: none;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	color: black;
+	font-size: 18px;
+	padding: 5px;
+	border-radius: 4px;
+}
+
+.datosjs{
+	outline: none;
+	border: none;
+}
+
+.datosjs2{
+	outline: none;
+	border: none;
+	text-align: center;
+	background-color: rgba(0, 150, 40, 0.02);
+}
+
+.datos2{
+	text-align: center;
+	background-color: rgba(0, 150, 40, 0.2);
+	font-size: 18px;
+	padding: 4px;
+}
+.datos2 input{
+	text-align: center;
+	background-color: rgba(0, 150, 40, 0.02);
+}
+
+.datos2 button{
+	font-size: 20px;
+}
+
+.btn-accion{
+	margin-left: 32px;
+	font-size: 20px;
+	text-align: center;
+}
+
+.result{
+	background-color: rgba(0, 150, 40, 0.2);
+	text-align: center;
+}

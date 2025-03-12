@@ -1,0 +1,33 @@
+php artisan route:list
+
+php artisan config:cache
+
+php artisan config:clear
+
+php artisan cache:clear
+
+tail -f storage/logs/laravel.log
+
+php artisan route:clear
+
+php artisan view:clear
+
+php artisan optimize (observación)
+
+php artisan env
+
+php artisan migrate
+
+php artisan migrate:refresh
+
+composer update
+
+composer update laravel/framework
+
+composer install
+
+composer dump-autoload
+
+composer show
+
+composer outdated

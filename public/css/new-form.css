@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+:root{ 
+	--bg-color: #f2f2f2;
+	--bg-color-submit: #000;
+
+	--label-border-color: #000;
+	--submit-color: #fff;
+}
+*{ 
+	font-family: 'Roboto', sans-serif;
+}
+.container{
+	padding: 20px 45px;
+	width: 100%;
+}
+.container .title{
+	font-size: 30px;
+	font-weight: 700;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.container .box{
+	width: 100%;
+	min-height: 400px;
+	margin-bottom: 10px;
+}
+.container .box-left{
+	float: left;
+	width: 50%;
+}
+.container .box-right{
+	float: right;
+	width: 50%;
+
+}
+.container form .input-box{
+	position: relative;
+	height: 45px;
+	width: 100%;
+	margin-top: 30px;
+	padding: 0 25px;
+}
+.container form .input-box input{
+	height: 100%;
+	width: 100%;
+	padding-left: 10px;
+	outline: 0;
+	font-size: 17px;
+	border: none;
+	border-bottom: 1px solid lightgrey;
+	transition: all 0.3s ease;
+}
+.container form .input-box input:focus,
+.container form .input-box input:valid
+.container form .input-box input:read-only{
+	border-bottom: 1px solid var(--label-border-color);
+	/*border-color: #4158d0;*/
+}
+
+.container form .input-box label{
+	position: absolute;
+	top: 50%;
+	left: 25px;
+	font-size: 17px;
+	color: #999;
+	transform: translateY(-50%);
+	pointer-events: none;
+	transition: all 0.3s ease;
+}
+.container form .input-box input:focus ~ label,
+.container form .input-box input:valid ~ label,
+.container form .input-box input:read-only ~ label{
+	top: 0%;
+	color: var(--label-border-color);
+	/*color: #4158d0;*/
+	font-size: 16px;
+	background: #fff;
+	transform: translateY(-50%);
+}
+
+.container .message-box{
+	height: 130px;
+	position: relative;
+	width: 100%;
+	margin: 30px 0 ;
+	padding: 0 25px;
+}
+.container .message-box textarea{
+	position: relative;
+	height: 110px;
+	font-size: 15px;
+	text-align: justify;
+	width: 100%;
+	margin-top: 20px;
+	padding: 12px 12px;
+	border-radius: 6px;
+	resize: none;
+	outline: 0;
+	border: 1px solid #999;
+}
+.container .message-box textarea:focus,
+.container .message-box textarea:valid{
+	border-color: var(--label-border-color);
+}
+.container .message-box label{
+	position: absolute;
+	top: 30%;
+	left: 35px;
+	font-size: 17px;
+	color: #999;
+	transform: translateY(-50%);
+	pointer-events: none;
+	transition: all 0.3s ease;	
+}
+.container .message-box textarea:focus ~ label,
+.container .message-box textarea:valid ~ label{
+	top: 0%;
+	left: 25px;
+	color: var(--label-border-color);
+	/*color: #4158d0;*/
+	font-size: 16px;
+	background: #fff;
+	transform: translateY(-50%);
+	border-color: #999;
+}
+.container form .input-box i{
+	position: relative;
+	cursor: pointer;
+	color: grey;
+	right: -95%;
+	bottom: 30px;
+	font-size: 18px;
+}
+.container form .input-box i::before{
+
+}
+.container form .input-box h2,
+.container form .input-box h3{
+	font-size: 17px;
+	font-weight: 300;
+	color: #000;
+	transform: translateY(-50%);
+}
+.container form .input-box select{
+	position: relative;
+	width: 100%;
+	padding: 5px 0 5px 8px;
+	cursor: pointer;
+	outline: 0;
+	border-color: #ccc;
+	border-radius: 6px;
+	color: rgba(0, 0, 0, 0.8);
+	font-size: 15px;
+}
+.container form .input-box h2{
+	position: absolute;
+	top: 0%;
+	background: #fff;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 2px;
+  opacity: 0.6;
+
+}
+
+.container form .submit{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 25px;
+}
+
+.container .submit a,
+.container form .submit input,
+.container form .submit button{
+	padding: 8px 15px;
+	border-radius: 6px;
+	border: none;
+	letter-spacing: .5px;
+	font-size: 17px;
+	font-weight: 500;
+	cursor: pointer;
+	background: #ccc;
+	transition: all 0.2s ease;
+}
+.container .button a{
+	position: absolute;
+}
+
+.container .button a:active,
+.container form .submit input:active{
+	transform: scale(0.95);
+}
+
+.container .box-center{
+	position: relative;
+	width: 50%;
+	margin: auto;
+}
+
+.values{
+	position: relative;
+	height: 50px;
+	width: 100%;
+	margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.values .value1,
+.values .value2{
+	position: relative;
+	width: 50%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 17px;
+}
+.values .value1{
+	padding: 0 60px 0px 25px;
+}
+.values .value2{
+	padding: 0 25px 0 60px;
+}
+.values input{
+	height: 20px;
+	width: 20px;
+}
+.values input:hover{
+	cursor: pointer;
+}
