@@ -90,18 +90,20 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::resource('Ftout', FtoutController::class);
 
 	Route::get('Evaluaciones', [EvaluacionController::class, 'vista']) ->name('Evaluaciones_vista');
-	Route::get('Ordenes de trabajo', [EvaluacionController::class, 'vista_eva']) ->name('Evaluaciones_vista_eva');
+	Route::get('Evaluaciones_editar/{id_eval}', [EvaluacionController::class, 'editar']) ->name('Evaluaciones_editar');
 	Route::get('Evaluaciones_crear/{id_cot}', [EvaluacionController::class, 'crear']) ->name('Evaluaciones_crear');
 	Route::post('Evaluaciones_guardar', [EvaluacionController::class, 'guardar']) ->name('Evaluaciones_guardar');
 	Route::post('Evaluaciones_guardarop', [EvaluacionController::class, 'guardarop']) ->name('Evaluaciones_guardarop');
-	Route::get('Evaluaciones_editar/{id_eval}', [EvaluacionController::class, 'editar']) ->name('Evaluaciones_editar');
 	Route::delete('Evaluaciones_eliminar/{id_eval}', [EvaluacionController::class, 'eliminar']) ->name('Evaluaciones_eliminar');
-	Route::get('items/{id_cot}', [ItemsController::class, 'registrar']) ->name('registro_item');
-	Route::post('guardar/{id_cot}', [ItemsController::class, 'guardar']) ->name('guardar_item');
+	
+	Route::get('Ordenes de trabajo', [EvaluacionController::class, 'vista_eva']) ->name('Evaluaciones_vista_eva'); //Vista de Evaluaciones
+	
+	Route::get('items/{id_cot}', [ItemsController::class, 'registrar']) ->name('registro_item'); //Item de COT
+	Route::post('guardar/{id_cot}', [ItemsController::class, 'guardar']) ->name('guardar_item'); //Item de COT
 	Route::delete('eliminar/{id_it}/{id_co}', [ItemsController::class, 'eliminar']) ->name('eliminar_item');
-	Route::get('itemsocp/{id_ocp}', [OcpItemsController::class, 'registrarocp']) ->name('registro_item_ocp');
-	Route::post('guardarocp/{id_ocp}', [OcpItemsController::class, 'guardarocp']) ->name('guardar_item_ocp');
-	Route::delete('eliminarocp/{id_it}/{id_co}', [OcpItemsController::class, 'eliminarocp']) ->name('eliminar_item_ocp');
+	Route::get('itemsocp/{id_ocp}', [OcpItemsController::class, 'registrarocp']) ->name('registro_item_ocp'); //Orden De Compra Proveedor
+	Route::post('guardarocp/{id_ocp}', [OcpItemsController::class, 'guardarocp']) ->name('guardar_item_ocp'); //Guardar Orden De Compra Proveedor
+	Route::delete('eliminarocp/{id_it}/{id_co}', [OcpItemsController::class, 'eliminarocp']) ->name('eliminar_item_ocp'); //Eliminar Orden De Compra Proveedor
 });
 
 Route::view('/', 'auth.login')->name('login');
