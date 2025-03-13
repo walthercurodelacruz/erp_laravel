@@ -54,15 +54,6 @@ use App\Http\Controllers\FichaTecnicaController;
 |
 */
 
-/*Route::group([
-    'middleware' => 'admin',
-    'prefix' => 'admin',
-    'namespace' => 'Admin'
-], function () {
-    Route::resource('User-admin', UsuarioController::class);
-});*/
-
-
 Route::group(['middleware' => ['auth']], function(){
 	Route::resource('User-admin', UsuarioController::class);
 	Route::resource('Almacen', AlmacenController::class);
