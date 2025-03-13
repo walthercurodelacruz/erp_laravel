@@ -63,10 +63,6 @@ use App\Http\Controllers\FichaTecnicaController;
 });*/
 
 
-Route::view('/', 'auth.login')->name('login');
-Route::view('Register', 'auth.register') ->name('registro');
-Route::view('Home', 'home') ->name('home');
-
 Route::group(['middleware' => ['auth']], function(){
 	Route::resource('User-admin', UsuarioController::class);
 	Route::resource('Almacen', AlmacenController::class);
@@ -101,6 +97,7 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::resource('Guia_Sa', GuiaSaController::class);
 	Route::resource('Ftin', FtinController::class);
 	Route::resource('Ftout', FtoutController::class);
+
 	Route::get('Evaluaciones', [EvaluacionController::class, 'vista']) ->name('Evaluaciones_vista');
 	Route::get('Ordenes de trabajo', [EvaluacionController::class, 'vista_eva']) ->name('Evaluaciones_vista_eva');
 	Route::get('Evaluaciones_crear/{id_cot}', [EvaluacionController::class, 'crear']) ->name('Evaluaciones_crear');
@@ -116,15 +113,15 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::delete('eliminarocp/{id_it}/{id_co}', [OcpItemsController::class, 'eliminarocp']) ->name('eliminar_item_ocp');
 });
 
+Route::view('/', 'auth.login')->name('login');
+Route::view('Register', 'auth.register') ->name('registro');
+Route::view('Home', 'home') ->name('home');
 
 Route::get('Ordenes de trabajo/detalles/{id_eval}', [EvaluacionController::class, 'detallesot']) ->name('detallesot');
 Route::get('Evaluaciones/detalles/{id_eval}', [EvaluacionController::class, 'detalleseva']) ->name('detalleseva');
 Route::get('exportar-pdf/{id_cot}', [GeneralController::class, 'exportarpdf']) ->name('pdf');
 Route::get('pdf-ocp/{id_ocp}', [GeneralController::class, 'pdfocp']) ->name('pdf_ocp');
 Route::get('detalles/stock', [GeneralController::class, 'stockdetalles']) ->name('stockdetalles');
-
-
-
 Route::get('dashboard', [GeneralController::class, 'dashboard']) ->name('dashboard');
 Route::get('cotizacion/clientes', [SearchController::class, 'searchclientes'])->name('search_cliente');
 Route::get('cotizacion/prod', [SearchController::class, 'searchprod'])->name('cotizacion_prod');
@@ -149,9 +146,6 @@ Route::get('buscar/ocp', [SearchController::class, 'buscarocp'])->name('buscar_o
 Route::get('buscar/numocc', [SearchController::class, 'searchnumocc'])->name('buscar_numocc');
 Route::get('buscar/clientes', [SearchController::class, 'buscarcliente'])->name('buscar_cliente');
 Route::get('buscar/proveedor', [SearchController::class, 'buscarproveedor'])->name('buscar_proveedor');
-
-
-
 Route::post('download/file', [GeneralController::class, 'downloadfile'])->name('download');
 
 Auth::routes();
